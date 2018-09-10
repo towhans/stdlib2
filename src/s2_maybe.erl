@@ -57,7 +57,7 @@ lift(F) ->
     Res                -> {ok, Res}
   catch
     throw:{error, Rsn} -> {error, Rsn};
-    _:Exn              -> {error, {lifted_exn, Exn, erlang:get_stacktrace()}}
+    _:Exn:Stacktrace   -> {error, {lifted_exn, Exn, Stacktrace}}
   end.
 
 
